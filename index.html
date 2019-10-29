@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Christopher Schroers</title>
+  <meta name="description" content="Personal Website">
+  <meta name="author" content="Christopher Schroers">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+  <template id="flex-template">
+    <div style="display:flex;flex-direction:row; margin:0.1em;">
+      <a href="#" class="link" target="_blank">
+      <div style="display:flex;flex-direction:column;padding-left:0.5em; padding-top:0.0em; width:500px;
+      min-height:100px;">
+        <div class="title"></div>
+        <div class="author"></div>
+        <div class="conference"></div>
+      </div>
+      </a>
+    </div>
+  </template>
+
+  <script type="text/javascript" src="bib.json"></script>
+  <script>
+    const books = [
+
+      {
+        title: 'Blind Image Super Resolution with Spatially Variant Degradations',
+        author: 'V. Cornillère, A. Djelouah, Y. Wang, O. Sorkine-Hornung C. Schroers',
+        conference: 'SIGGRAPH Asia 2019, to appear',
+        image: 'pic1.jpg',
+        url_paper: '#'
+      }, {
+        title: 'Deep Generative Video Compression',
+        author: 'J. Han, S. Lombardo, C. Schroers, S. Mandt',
+        conference: 'NeurIPS 2019, to appear',
+        image: 'pic1.jpg',
+        url_paper: '#'
+      },
+      {
+        title: 'Neural Inter-Frame Compression for Video Coding',
+        author: 'A. Djelouah, J. Campos, S. Schaub-Meyer, C. Schroers',
+        conference: 'ICCV 2019',
+        image: 'pic1.jpg',
+        url_paper: 'http://openaccess.thecvf.com/content_ICCV_2019/papers/Djelouah_Neural_Inter-Frame_Compression_for_Video_Coding_ICCV_2019_paper.pdf'
+      },
+      {
+        title: 'Content Adaptive Optimization for Learned Image and Video Compression',
+        author: 'J. Campos, S. Meierhans, A. Djelouah, C. Schroers',
+        conference: 'CVPR CLIC 2019',
+        image: 'pic1.jpg',
+        url_paper: 'http://openaccess.thecvf.com/content_CVPRW_2019/papers/CLIC%202019/Campos_Content_Adaptive_Optimization_for_Neural_Image_Compression_CVPRW_2019_paper.pdf'
+      },
+      {
+        title: 'An Omnistereoscopic Video Pipeline for Capture and Display of Real-World VR',
+        author: 'C. Schroers, J. Bazin, A. Sorkine-Hornung',
+        conference: 'TOG 2018, presented at SIGGRAPH',
+        image: 'pic1.jpg',
+        url_paper: 'https://studios.disneyresearch.com/wp-content/uploads/2019/03/An-Omnistereoscopic-Video-Pipeline-for-Capture-and-Display-of-Real-World-VR-1.pdf'
+      },
+      {
+        title: 'Normalized Cut Loss for Weakly-supervised CNN Segmentation',
+        author: 'M. Tang, A. Djelouah, F. Perazzi, Y.Boykov, C.Schroers ',
+        conference: 'CVPR 2018',
+        image: 'Chris_Schroers.jpg',
+        url_paper: 'http://openaccess.thecvf.com/content_cvpr_2018/papers/Tang_Normalized_Cut_Loss_CVPR_2018_paper.pdf'
+      },
+      {
+        title: 'On Regularized Losses for Weakly-supervised CNN Segmentation',
+        author: 'M. Tang, F. Perazzi, A. Djelouah, I. Ben Ayed, C. Schroers, Y. Boykov',
+        conference: 'ECCV 2018',
+        image: 'pic1.jpg',
+        url_paper: 'http://openaccess.thecvf.com/content_ECCV_2018/papers/Meng_Tang_On_Regularized_Losses_ECCV_2018_paper.pdf'
+      },
+      {
+        title: 'PhaseNet for Video Frame Interpolation',
+        author: 'S. Meyer, A. Djelouah, B. McWilliams, A. Sorkine-Hornung, M. Gross, C. Schroers',
+        conference: 'CVPR 2018',
+        image: 'pic1.jpg',
+        url_paper: 'http://openaccess.thecvf.com/content_cvpr_2018/papers/Meyer_PhaseNet_for_Video_CVPR_2018_paper.pdf'
+      },
+      {
+        title: 'A Fully Progressive Approach to Single-Image Super-Resolution',
+        author: 'Y. Wang, F. Perazzi, B. McWilliams, A. Sorkine-Hornung, O. Sorkine-Hornung, C. Schroers',
+        conference: 'CVPR NTIRE 2018',
+        image: 'pic1.jpg',
+        url_paper: 'http://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w13/Wang_A_Fully_Progressive_CVPR_2018_paper.pdf'
+      }
+    ];
+  </script>
+
+</head>
+
+<body>
+
+  <div class="main-container">
+
+    <div class="image-name-title" id="image-name-title">
+      <img style="margin:0;width:200px;height:200px;
+      border-radius: 50%; margin-top:1em; margin-right:1em;" src="Chris_Schroers.jpg" />
+
+      <div class="name-title" style="display:flex; flex-direction:column;  align-items:left">
+        <div style="font-size:50px;font-style:bold;color:#666666;">Christopher Schroers</div>
+        <!--<div style="font-size:25px;color:#666666;">Research Scientist @ DisneyResearch|Studios</div>-->
+        <div style="font-size:14px;color:#666666;width:550px;margin-top:1em">
+          I am a Research Scientist at DisneyResearch|Studios focusing on visual computing. More specifically, I am working on leveraging machine learning for image and video processing tasks such as super resolution, frame interpolation, and
+          compression. Previously, my research targeted panoramic video processing for immersive VR experiences and 3D reconstruction for set scanning.
+          Below is a list of recent publications.
+          <!-- Prior to joining Disney Research, I received a PhD degree in computer science from Saarland University, Germany supervised by Joachim Weickert. I also received a master’s degree in visual computing from Saarland University and a diploma in business and computer science from Nordakademie, Germany while working at Philips Medical Systems. -->
+        </div>
+      </div>
+    </div>
+
+    <!--<div style="text-align:center;margin-top:100px;margin-bottom:15px">Selected Publications</div>-->
+    <div style="display:flex; justify-content: center; padding:0px">
+      <div id="publications" class="publications" />
+    </div>
+    <div>
+
+
+      <script>
+        'use strict';
+        function appendBooks(templateId) {
+          const booksList = document.getElementById('publications');
+          const fragment = document.getElementById(templateId);
+
+          booksList.innerHTML = '';
+
+          books.forEach(book => {
+            // Create an instance of the template content
+            const instance = document.importNode(fragment.content, true);
+
+            // Add relevant content to the template
+            instance.querySelector('.title').innerHTML = book.title;
+            instance.querySelector('.author').innerHTML = book.author;
+            instance.querySelector('.conference').innerHTML = "(" + book.conference + ")";
+            instance.querySelector('.link').href = book.url_paper;
+            // instance.querySelector('.thumb').src = book.image;
+
+            booksList.appendChild(instance);
+          });
+        }
+
+        appendBooks('flex-template');
+      </script>
+
+</body>
+
+</html>

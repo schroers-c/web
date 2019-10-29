@@ -1,0 +1,45 @@
+body {
+  background-color: #F4F4F4;
+  font-family: 'Quicksand', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-weight: 600;
+  color: #5b90c1;
+}
+
+.publications {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 1080px;
+}
+
+.image-name-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 3em;
+}
+
+@media only screen and (max-width: 1000px) {
+  .image-name-title {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .publications {
+    width: 540px;
+  }
+}
