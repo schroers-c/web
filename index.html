@@ -1,31 +1,209 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>Christopher Schroers</title>
-  <meta name="description" content="Personal Website">
-  <meta name="author" content="Christopher Schroers">
-  <meta name="google-site-verification" content="iqgXimqKqbbT0s0BOlR2lz_uv9hsB-JkKQDC7iAv0dQ" />
-  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christopher Schroers - Research Portfolio</title>
+    <meta name="description" content="Personal Website of Christopher Schroers">
+    <meta name="author" content="Christopher Schroers">
+    
+    <style>
+        /* --- 1. Variables & Reset --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --accent: #2563eb; /* Academic Blue */
+            --radius: 12px;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-  <template id="flex-template">
-    <div style="display:flex;flex-direction:row; margin:0.1em;">
-      <a href="#" class="link" target="_blank">
-      <div style="display:flex;flex-direction:column;padding-left:0.5em; padding-top:0.0em; width:500px;
-      min-height:100px;">
-        <div class="title"></div>
-        <div class="author"></div>
-        <div class="conference"></div>
-      </div>
-      </a>
-    </div>
-  </template>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <script type="text/javascript" src="bib.json"></script>
-  <script>
-    const books = [
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 2. Layout Structure --- */
+        .wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 350px 1fr; /* Fixed sidebar, flexible content */
+            gap: 4rem;
+            padding: 4rem 2rem;
+            min-height: 100vh;
+        }
+
+        /* --- 3. Profile Section (Left) --- */
+        aside.profile {
+            position: sticky;
+            top: 4rem;
+            height: fit-content;
+            text-align: left; /* Ensures left alignment */
+        }
+
+        .avatar {
+            width: 180px;
+            height: 180px;
+            background-color: #eee;
+            border-radius: 50%; 
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+            color: #111;
+            line-height: 1.1;
+        }
+
+        .role {
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+           .title {
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .bio {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        /* Social Links Styling */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+        }
+
+        .social-link span {
+            border-bottom: 1px solid transparent;
+        }
+
+        .social-link:hover span {
+            border-bottom-color: var(--accent);
+        }
+
+        /* --- 4. Papers Section (Right) --- */
+        main.papers {
+            padding-top: 0.5rem;
+        }
+
+        h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        /* Styles for dynamic content */
+        .paper-item {
+            margin-bottom: 2.5rem;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-left: 3px solid transparent;
+            padding-left: 0;
+            transition: all 0.2s ease;
+        }
+
+        .paper-item:hover {
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .paper-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .paper-item:hover .paper-title {
+            color: var(--accent);
+        }
+
+        .paper-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .paper-venue {
+            display: inline-block;
+            background: #f3f4f6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        /* --- 5. Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 3rem 1.5rem;
+            }
+            aside.profile {
+                position: relative;
+                top: 0;
+                text-align: center;
+            }
+            .avatar {
+                margin: 0 auto 1.5rem auto;
+            }
+            .bio {
+                text-align: left;
+            }
+            .social-links {
+                flex-direction: row;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+
+    <script>
+     const books = [
       {
         title: 'High-Fidelity Novel View Synthesis via Splatting-Guided Diffusion',
         author: 'X. Zhang, Y. Zhang, L. Mehl, M. Gross, C. Schroers',
@@ -194,64 +372,71 @@
         url_paper: 'http://openaccess.thecvf.com/content_cvpr_2018/papers/Meyer_PhaseNet_for_Video_CVPR_2018_paper.pdf'
       }
     ];
-  </script>
-
+    </script>
 </head>
-
 <body>
 
-  <div class="main-container">
+    <div class="wrapper">
+        
+        <aside class="profile">
+            <img src="Chris_Schroers.jpg" alt="Christopher Schroers" class="avatar">
+            
+            <h1>Christopher Schroers</h1>
+            <div class="title">Director of Research & Development</div>
+            
+            <div class="bio">
+              At DisneyResearch|Studios, I lead a team focusing on machine learning for image and video processing.
+My work has directly impacted film production with recent movie credits on <em>Thunderbolts</em> and <em>Fantastic Four</em>. I was also honored with a <em>Technology Emmy</em> for video compression contributions to the Disney+ platform.        </div>
+            <nav class="social-links">
+                <a href="https://scholar.google.com/citations?user=j0nCulgAAAAJ&hl=en" class="social-link">
+                    <span>Google Scholar</span>
+                </a>
+                <a href="https://www.linkedin.com/in/christopher-schroers-a3a68499/" class="social-link">
+                    <span>LinkedIn</span>
+                </a>
+            </nav>
 
-    <div class="image-name-title" id="image-name-title">
-      <img style="margin:0;width:200px;height:200px;
-      border-radius: 50%; margin-top:1em; margin-right:1em;" src="Chris_Schroers.jpg" />
+        </aside>
 
-      <div class="name-title" style="display:flex; flex-direction:column;  align-items:left">
-        <div style="font-size:50px;font-style:bold;color:#666666;">Christopher Schroers</div>
-        <!--<div style="font-size:25px;color:#666666;">Research Scientist @ DisneyResearch|Studios</div>-->
-        <div style="font-size:14px;color:#666666;width:550px;margin-top:1em">
-          I am Director of Research & Development at DisneyResearch|Studios focusing on visual computing. More specifically, I am heading the Imaging
-and Video Group which develops machine learning approaches for image and video processing tasks such as super resolution, frame
-interpolation, and compression. In 2021, I have been honored with a Technology Emmy for work on video compression in collaboration
-with DisneyStreaming for the Disney+ platform. Previously, my research targeted panoramic video processing for immersive VR
-experiences and 3D reconstruction for set scanning. Please find a list of selected publications below.
-        </div>
-      </div>
+        <main class="papers">
+            <h2>Selected Publications</h2>
+            
+            <div id="paper-list-container"></div>
+        </main>
     </div>
 
-    <!--<div style="text-align:center;margin-top:100px;margin-bottom:15px">Selected Publications</div>-->
-    <div style="display:flex; justify-content: center; padding:0px">
-      <div id="publications" class="publications" />
-    </div>
-    <div>
+    <script>
+        const container = document.getElementById('paper-list-container');
 
+        books.forEach(book => {
+            // 1. Create the Link Wrapper
+            const anchor = document.createElement('a');
+            anchor.href = book.url_paper;
+            anchor.className = 'paper-item';
+            anchor.target = "_blank"; // Open in new tab
 
-      <script>
-        'use strict';
-        function appendBooks(templateId) {
-          const booksList = document.getElementById('publications');
-          const fragment = document.getElementById(templateId);
+            // 2. Create Title
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'paper-title';
+            titleDiv.textContent = book.title;
 
-          booksList.innerHTML = '';
+            // 3. Create Author List
+            const metaDiv = document.createElement('div');
+            metaDiv.className = 'paper-meta';
+            metaDiv.textContent = book.author;
 
-          books.forEach(book => {
-            // Create an instance of the template content
-            const instance = document.importNode(fragment.content, true);
+            // 4. Create Venue/Conference
+            const venueDiv = document.createElement('div');
+            venueDiv.className = 'paper-venue';
+            venueDiv.textContent = book.conference;
 
-            // Add relevant content to the template
-            instance.querySelector('.title').innerHTML = book.title;
-            instance.querySelector('.author').innerHTML = book.author;
-            instance.querySelector('.conference').innerHTML = "(" + book.conference + ")";
-            instance.querySelector('.link').href = book.url_paper;
-            // instance.querySelector('.thumb').src = book.image;
-
-            booksList.appendChild(instance);
-          });
-        }
-
-        appendBooks('flex-template');
-      </script>
+            // 5. Append parts to the link, and link to container
+            anchor.appendChild(titleDiv);
+            anchor.appendChild(metaDiv);
+            anchor.appendChild(venueDiv);
+            container.appendChild(anchor);
+        });
+    </script>
 
 </body>
-
 </html>
